@@ -2,7 +2,9 @@ package com.fbiankevin.reactive.springbootreactiverestcrudexample.controller
 
 
 import com.fbiankevin.reactive.springbootreactiverestcrudexample.interactor.CreateStudent
+import com.fbiankevin.reactive.springbootreactiverestcrudexample.interactor.DeleteStudent
 import com.fbiankevin.reactive.springbootreactiverestcrudexample.interactor.GetStudents
+import com.fbiankevin.reactive.springbootreactiverestcrudexample.interactor.UpdateStudent
 import com.fbiankevin.reactive.springbootreactiverestcrudexample.request.StudentForm
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -14,19 +16,19 @@ import java.time.temporal.ChronoUnit
 @RequestMapping("/students")
 class StudentController(
         private val createStudent: CreateStudent,
-        private val getStudents: GetStudents
-//        private val updateStudent: UpdateStudent,
-//        private val deleteStudent: DeleteStudent
+        private val getStudents: GetStudents,
+        private val updateStudent: UpdateStudent,
+        private val deleteStudent: DeleteStudent
 ) {
 
     @PostMapping
     fun createStudent(@RequestBody studentForm: StudentForm) = createStudent.execute(studentForm)
 
-//    @PutMapping
-//    fun updateStudent(@RequestBody studentForm: StudentForm) = updateStudent.execute(studentForm)
+    @PutMapping
+    fun updateStudent(@RequestBody studentForm: StudentForm) = updateStudent.execute(studentForm)
 //
-//    @DeleteMapping("/{id}")
-//    fun deleteStudent(@PathVariable id:Long) = deleteStudent.execute(id)
+    @DeleteMapping("/{id}")
+    fun deleteStudent(@PathVariable id:String) = deleteStudent.execute(id)
 //
     @GetMapping
     fun getStudents() = getStudents.execute()
