@@ -1,4 +1,4 @@
-# REST Reactive API example using Springboot Webflux - Kotlin
+# REST API example using Springboot Webflux - Kotlin
 
 Contents
 
